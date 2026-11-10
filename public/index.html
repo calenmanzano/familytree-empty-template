@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Family Tree</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Apply the saved theme (or the device's setting) before the page draws, so there's no flash
+    (function () {
+      var theme;
+      try { theme = localStorage.getItem('theme'); } catch (e) {}
+      if (theme !== 'dark' && theme !== 'light') {
+        theme = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <button class="brand" id="familyName" type="button" title="Rename this tree">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v6m0 0c-3 0-5 2-5 5m5-5c3 0 5 2 5 5M7 14v4m10-4v4M12 9v9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="3.5" r="2" fill="currentColor"/><circle cx="7" cy="19" r="2" fill="currentColor"/><circle cx="12" cy="19" r="2" fill="currentColor"/><circle cx="17" cy="19" r="2" fill="currentColor"/></svg>
+      <span id="familyNameText">Family</span>
+    </button>
+
+    <div class="search" role="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input id="searchInput" type="search" placeholder="Find a relative" autocomplete="off" aria-label="Find a relative" aria-controls="searchResults" aria-expanded="false">
+      <ul id="searchResults" class="search-results" role="listbox" hidden></ul>
+    </div>
+
+    <div class="top-actions">
+      <button class="btn ghost icon-only" id="themeBtn" type="button" title="Switch to dark mode" aria-label="Switch to dark mode">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <button class="btn ghost" id="homeBtn" type="button" title="Go to home person">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <span class="label">Home</span>
+      </button>
+      <button class="btn primary" id="addPersonBtn" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <span class="label">Add person</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="stage">
+    <div id="viewport" class="viewport" tabindex="-1">
+      <div id="world" class="world">
+        <svg id="links" class="links" aria-hidden="true"></svg>
+      </div>
+    </div>
+
+    <div id="emptyState" class="empty" hidden>
+      <h1>Start your family tree</h1>
+      <p>Add yourself or the oldest relative you know about. You can add parents, partners and children from there.</p>
+      <button class="btn primary" type="button" data-action="add-first">Add the first person</button>
+    </div>
+
+    <div class="view-toggles">
+      <button type="button" class="view-toggle" id="partnerToggle" role="switch" aria-checked="true" title="Show or hide the spouse's parents, siblings, nieces and nephews">
+        <span class="switch" aria-hidden="true"></span>
+        <span>Spouse's relatives</span>
+      </button>
+      <button type="button" class="view-toggle" id="surnameToggle" role="switch" aria-checked="true" title="On name cards, show the surname a person was born with (for example a wife's maiden name)">
+        <span class="switch" aria-hidden="true"></span>
+        <span>Show birth surname</span>
+      </button>
+    </div>
+
+    <div class="zoom" aria-label="Zoom">
+      <button type="button" id="zoomIn" title="Zoom in" aria-label="Zoom in">+</button>
+      <button type="button" id="zoomOut" title="Zoom out" aria-label="Zoom out">&minus;</button>
+      <button type="button" id="zoomReset" title="Center on focus person" aria-label="Center on focus person">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <aside id="panel" class="panel" aria-label="Profile" aria-live="polite"></aside>
+  </main>
+
+  <!-- Add / edit person -->
+  <dialog id="personDialog" class="dialog">
+    <form method="dialog" id="personForm" novalidate>
+      <header class="dialog-head">
+        <h2 id="personDialogTitle">Add person</h2>
+        <button type="button" class="icon-btn" data-close aria-label="Close">&times;</button>
+      </header>
+      <div class="dialog-body">
+        <p class="relation-note" id="relationNote" hidden></p>
+
+        <fieldset class="gender-pick">
+          <legend>Gender</legend>
+          <label><input type="radio" name="gender" value="male"><span>Male</span></label>
+          <label><input type="radio" name="gender" value="female"><span>Female</span></label>
+          <label><input type="radio" name="gender" value="other"><span>Other</span></label>
+          <label><input type="radio" name="gender" value="unknown" checked><span>Unknown</span></label>
+        </fieldset>
+
+        <div class="grid two">
+          <label class="field"><span>First name</span><input name="firstName" autocomplete="off"></label>
+          <label class="field"><span>Middle name</span><input name="middleName" autocomplete="off"></label>
+          <label class="field"><span>Last name</span><input name="lastName" autocomplete="off"></label>
+          <label class="field"><span>Birth surname <small>if different</small></span><input name="maidenName" autocomplete="off"></label>
+        </div>
+
+        <div class="grid two">
+          <label class="field"><span>Birth date</span><input name="birthDate" data-date placeholder="12 May 1948, May 1948 or 1948" autocomplete="off"></label>
+          <label class="field"><span>Birthplace</span><input name="birthPlace" placeholder="City, country"></label>
+        </div>
+
+        <label class="check"><input type="checkbox" name="deceased"><span>This person has died</span></label>
+        <div class="grid two" id="deathFields" hidden>
+          <label class="field"><span>Death date</span><input name="deathDate" data-date placeholder="12 May 1948" autocomplete="off"></label>
+          <label class="field"><span>Place of death</span><input name="deathPlace" placeholder="City, country"></label>
+        </div>
+
+        <div id="otherParentRow" class="field" hidden>
+          <span>Other parent</span>
+          <select name="otherParent"></select>
+        </div>
+
+        <label class="check" id="coParentRow" hidden><input type="checkbox" name="coParent" checked><span id="coParentText"></span></label>
+
+        <div id="marriageFields" class="grid two" hidden>
+          <label class="field"><span>Marriage date</span><input name="marriageDate" data-date placeholder="12 May 1948" autocomplete="off"></label>
+          <label class="field"><span>Marriage place</span><input name="marriagePlace" placeholder="City, country"></label>
+        </div>
+
+        <details class="more">
+          <summary>Photo, story and other life events</summary>
+          <label class="field"><span>Photo</span>
+            <span class="photo-row">
+              <input name="photo" placeholder="Paste an image link">
+              <label class="btn ghost small file-btn">Upload<input type="file" accept="image/*" id="photoFile" hidden></label>
+            </span>
+          </label>
+          <label class="field"><span>Life story</span><textarea name="bio" rows="3" placeholder="Where they lived, what they did, stories worth keeping"></textarea></label>
+          <div class="events-edit">
+            <div class="events-head"><span>Other life events</span><button type="button" class="btn ghost small" id="addEventRow">Add event</button></div>
+            <div id="eventRows"></div>
+          </div>
+        </details>
+        <p class="form-error" id="personError" role="alert" hidden></p>
+      </div>
+      <footer class="dialog-foot">
+        <button type="button" class="btn ghost" data-close>Cancel</button>
+        <button type="submit" class="btn primary" id="personSubmit">Add person</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- Link existing person / edit partnership -->
+  <dialog id="linkDialog" class="dialog narrow">
+    <form method="dialog" id="linkForm" novalidate>
+      <header class="dialog-head">
+        <h2 id="linkTitle">Link a relative</h2>
+        <button type="button" class="icon-btn" data-close aria-label="Close">&times;</button>
+      </header>
+      <div class="dialog-body">
+        <div id="linkPick">
+          <fieldset class="seg">
+            <legend>Relationship to <span id="linkAnchorName"></span></legend>
+            <label><input type="radio" name="relation" value="parent" checked><span>Parent</span></label>
+            <label><input type="radio" name="relation" value="partner"><span>Partner</span></label>
+            <label><input type="radio" name="relation" value="child"><span>Child</span></label>
+          </fieldset>
+          <label class="field"><span>Person</span>
+            <input id="linkFilter" placeholder="Type to filter" autocomplete="off">
+          </label>
+          <select id="linkPerson" size="6" aria-label="Choose a person"></select>
+        </div>
+        <div id="linkMarriage" class="grid two" hidden>
+          <label class="field"><span>Marriage date</span><input name="marriageDate" data-date placeholder="12 May 1948" autocomplete="off"></label>
+          <label class="field"><span>Marriage place</span><input name="marriagePlace" placeholder="City, country"></label>
+          <label class="field"><span>Divorce date <small>if any</small></span><input name="divorceDate" data-date placeholder="12 May 1948" autocomplete="off"></label>
+        </div>
+        <p class="form-error" id="linkError" role="alert" hidden></p>
+      </div>
+      <footer class="dialog-foot">
+        <button type="button" class="btn ghost" data-close>Cancel</button>
+        <button type="submit" class="btn primary" id="linkSubmit">Link</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- Confirm -->
+  <dialog id="confirmDialog" class="dialog narrow">
+    <form method="dialog">
+      <div class="dialog-body">
+        <h2 id="confirmTitle">Are you sure?</h2>
+        <p id="confirmText"></p>
+      </div>
+      <footer class="dialog-foot">
+        <button value="cancel" class="btn ghost">Cancel</button>
+        <button value="ok" class="btn danger" id="confirmOk">Delete</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+  <script src="dates.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
