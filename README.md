@@ -1,6 +1,6 @@
 # Family Tree
-
-A family tree website with an Express API and a plain JSON file as the database.
+A clean and functional family tree web app. Has all the basic necessities of a family tree website. This is an empty template, you start your own family tree with this.
+This website is run with an Express API and a plain JSON file as the database.
 
 ## Run it
 
