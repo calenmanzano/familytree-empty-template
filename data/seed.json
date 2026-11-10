@@ -1,0 +1,605 @@
+{
+  "meta": {
+    "name": "The Hartwell Family",
+    "rootPersonId": "p_daniel",
+    "updatedAt": "2026-10-09T00:00:00.000Z"
+  },
+  "people": [
+    {
+      "id": "p_walter",
+      "firstName": "Walter",
+      "middleName": "",
+      "lastName": "Hartwell",
+      "maidenName": "",
+      "nickname": "",
+      "gender": "male",
+      "birth": {
+        "date": "1898-03-14",
+        "place": "Leeds, England"
+      },
+      "death": {
+        "date": "1971-11-02",
+        "place": "Boston, Massachusetts"
+      },
+      "living": false,
+      "photo": "",
+      "bio": "",
+      "parents": [],
+      "spouses": [
+        {
+          "id": "p_edith",
+          "marriageDate": "1924-09-06",
+          "marriagePlace": "Boston, Massachusetts",
+          "divorceDate": null,
+          "status": "married"
+        }
+      ],
+      "events": [
+        {
+          "id": "e_seed1",
+          "type": "Immigration",
+          "date": "1921-06",
+          "endDate": null,
+          "place": "Boston, Massachusetts",
+          "note": "Arrived aboard the SS Cedric"
+        }
+      ],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    },
+    {
+      "id": "p_edith",
+      "firstName": "Edith",
+      "middleName": "",
+      "lastName": "Hartwell",
+      "maidenName": "Moore",
+      "nickname": "",
+      "gender": "female",
+      "birth": {
+        "date": "1902-07-30",
+        "place": "Boston, Massachusetts"
+      },
+      "death": {
+        "date": "1985-01-19",
+        "place": "Boston, Massachusetts"
+      },
+      "living": false,
+      "photo": "",
+      "bio": "",
+      "parents": [],
+      "spouses": [
+        {
+          "id": "p_walter",
+          "marriageDate": "1924-09-06",
+          "marriagePlace": "Boston, Massachusetts",
+          "divorceDate": null,
+          "status": "married"
+        }
+      ],
+      "events": [],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    },
+    {
+      "id": "p_antonio",
+      "firstName": "Antonio",
+      "middleName": "",
+      "lastName": "Ricci",
+      "maidenName": "",
+      "nickname": "",
+      "gender": "male",
+      "birth": {
+        "date": "1900-05-02",
+        "place": "Naples, Italy"
+      },
+      "death": {
+        "date": "1968-09-10",
+        "place": "Providence, Rhode Island"
+      },
+      "living": false,
+      "photo": "",
+      "bio": "",
+      "parents": [],
+      "spouses": [
+        {
+          "id": "p_maria",
+          "marriageDate": "1926-02-14",
+          "marriagePlace": "Providence, Rhode Island",
+          "divorceDate": null,
+          "status": "married"
+        }
+      ],
+      "events": [
+        {
+          "id": "e_seed2",
+          "type": "Immigration",
+          "date": "1920",
+          "endDate": null,
+          "place": "Providence, Rhode Island",
+          "note": ""
+        },
+        {
+          "id": "e_seed3",
+          "type": "Occupation",
+          "date": "1925",
+          "endDate": null,
+          "place": "Providence, Rhode Island",
+          "note": "Opened a bakery on Atwells Avenue"
+        }
+      ],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    },
+    {
+      "id": "p_maria",
+      "firstName": "Maria",
+      "middleName": "",
+      "lastName": "Ricci",
+      "maidenName": "Esposito",
+      "nickname": "",
+      "gender": "female",
+      "birth": {
+        "date": "1904-12-08",
+        "place": "Naples, Italy"
+      },
+      "death": {
+        "date": "1990-04-22",
+        "place": "Providence, Rhode Island"
+      },
+      "living": false,
+      "photo": "",
+      "bio": "",
+      "parents": [],
+      "spouses": [
+        {
+          "id": "p_antonio",
+          "marriageDate": "1926-02-14",
+          "marriagePlace": "Providence, Rhode Island",
+          "divorceDate": null,
+          "status": "married"
+        }
+      ],
+      "events": [],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    },
+    {
+      "id": "p_samuel",
+      "firstName": "Samuel",
+      "middleName": "",
+      "lastName": "Okafor",
+      "maidenName": "",
+      "nickname": "",
+      "gender": "male",
+      "birth": {
+        "date": "1929-02-11",
+        "place": "Lagos, Nigeria"
+      },
+      "death": {
+        "date": "1999-08-05",
+        "place": "Atlanta, Georgia"
+      },
+      "living": false,
+      "photo": "",
+      "bio": "",
+      "parents": [],
+      "spouses": [
+        {
+          "id": "p_grace",
+          "marriageDate": "1956-12-20",
+          "marriagePlace": "Lagos, Nigeria",
+          "divorceDate": null,
+          "status": "married"
+        }
+      ],
+      "events": [
+        {
+          "id": "e_seed4",
+          "type": "Graduation",
+          "date": "1952",
+          "endDate": null,
+          "place": "London, England",
+          "note": "Engineering degree"
+        }
+      ],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    },
+    {
+      "id": "p_grace",
+      "firstName": "Grace",
+      "middleName": "",
+      "lastName": "Okafor",
+      "maidenName": "Adeyemi",
+      "nickname": "",
+      "gender": "female",
+      "birth": {
+        "date": "1934-10-01",
+        "place": "Ibadan, Nigeria"
+      },
+      "death": {
+        "date": "2021-03-14",
+        "place": "Atlanta, Georgia"
+      },
+      "living": false,
+      "photo": "",
+      "bio": "",
+      "parents": [],
+      "spouses": [
+        {
+          "id": "p_samuel",
+          "marriageDate": "1956-12-20",
+          "marriagePlace": "Lagos, Nigeria",
+          "divorceDate": null,
+          "status": "married"
+        }
+      ],
+      "events": [],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    },
+    {
+      "id": "p_george",
+      "firstName": "George",
+      "middleName": "Edward",
+      "lastName": "Hartwell",
+      "maidenName": "",
+      "nickname": "",
+      "gender": "male",
+      "birth": {
+        "date": "1927-08-21",
+        "place": "Boston, Massachusetts"
+      },
+      "death": {
+        "date": "2004-02-09",
+        "place": "Hartford, Connecticut"
+      },
+      "living": false,
+      "photo": "",
+      "bio": "",
+      "parents": [
+        "p_walter",
+        "p_edith"
+      ],
+      "spouses": [
+        {
+          "id": "p_lucia",
+          "marriageDate": "1952-06-28",
+          "marriagePlace": "Providence, Rhode Island",
+          "divorceDate": null,
+          "status": "married"
+        }
+      ],
+      "events": [
+        {
+          "id": "e_seed5",
+          "type": "Military service",
+          "date": "1945",
+          "endDate": "1947",
+          "place": "Pacific Theater",
+          "note": "U.S. Navy"
+        }
+      ],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    },
+    {
+      "id": "p_lucia",
+      "firstName": "Lucia",
+      "middleName": "",
+      "lastName": "Hartwell",
+      "maidenName": "Ricci",
+      "nickname": "",
+      "gender": "female",
+      "birth": {
+        "date": "1930-04-17",
+        "place": "Providence, Rhode Island"
+      },
+      "death": {
+        "date": "2019-12-01",
+        "place": "Hartford, Connecticut"
+      },
+      "living": false,
+      "photo": "",
+      "bio": "",
+      "parents": [
+        "p_antonio",
+        "p_maria"
+      ],
+      "spouses": [
+        {
+          "id": "p_george",
+          "marriageDate": "1952-06-28",
+          "marriagePlace": "Providence, Rhode Island",
+          "divorceDate": null,
+          "status": "married"
+        }
+      ],
+      "events": [],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    },
+    {
+      "id": "p_frank",
+      "firstName": "Frank",
+      "middleName": "",
+      "lastName": "Ricci",
+      "maidenName": "",
+      "nickname": "",
+      "gender": "male",
+      "birth": {
+        "date": "1933-01-26",
+        "place": "Providence, Rhode Island"
+      },
+      "death": {
+        "date": "2010-06-18",
+        "place": "Providence, Rhode Island"
+      },
+      "living": false,
+      "photo": "",
+      "bio": "",
+      "parents": [
+        "p_antonio",
+        "p_maria"
+      ],
+      "spouses": [],
+      "events": [],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    },
+    {
+      "id": "p_robert",
+      "firstName": "Robert",
+      "middleName": "",
+      "lastName": "Hartwell",
+      "maidenName": "",
+      "nickname": "",
+      "gender": "male",
+      "birth": {
+        "date": "1955-06-03",
+        "place": "Hartford, Connecticut"
+      },
+      "death": null,
+      "living": true,
+      "photo": "",
+      "bio": "",
+      "parents": [
+        "p_george",
+        "p_lucia"
+      ],
+      "spouses": [
+        {
+          "id": "p_ada",
+          "marriageDate": "1981-05-16",
+          "marriagePlace": "Atlanta, Georgia",
+          "divorceDate": null,
+          "status": "married"
+        }
+      ],
+      "events": [
+        {
+          "id": "e_seed6",
+          "type": "Graduation",
+          "date": "1977",
+          "endDate": null,
+          "place": "New Haven, Connecticut",
+          "note": "B.A. History"
+        }
+      ],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    },
+    {
+      "id": "p_ellen",
+      "firstName": "Ellen",
+      "middleName": "",
+      "lastName": "Brooks",
+      "maidenName": "Hartwell",
+      "nickname": "",
+      "gender": "female",
+      "birth": {
+        "date": "1958-09-12",
+        "place": "Hartford, Connecticut"
+      },
+      "death": null,
+      "living": true,
+      "photo": "",
+      "bio": "",
+      "parents": [
+        "p_george",
+        "p_lucia"
+      ],
+      "spouses": [],
+      "events": [],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    },
+    {
+      "id": "p_ada",
+      "firstName": "Ada",
+      "middleName": "",
+      "lastName": "Hartwell",
+      "maidenName": "Okafor",
+      "nickname": "",
+      "gender": "female",
+      "birth": {
+        "date": "1958-11-27",
+        "place": "Atlanta, Georgia"
+      },
+      "death": null,
+      "living": true,
+      "photo": "",
+      "bio": "",
+      "parents": [
+        "p_samuel",
+        "p_grace"
+      ],
+      "spouses": [
+        {
+          "id": "p_robert",
+          "marriageDate": "1981-05-16",
+          "marriagePlace": "Atlanta, Georgia",
+          "divorceDate": null,
+          "status": "married"
+        }
+      ],
+      "events": [],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    },
+    {
+      "id": "p_daniel",
+      "firstName": "Daniel",
+      "middleName": "",
+      "lastName": "Hartwell",
+      "maidenName": "",
+      "nickname": "",
+      "gender": "male",
+      "birth": {
+        "date": "1984-02-19",
+        "place": "Hartford, Connecticut"
+      },
+      "death": null,
+      "living": true,
+      "photo": "",
+      "bio": "Started this family tree in 2026 from Grandma Lucia's photo albums.",
+      "parents": [
+        "p_robert",
+        "p_ada"
+      ],
+      "spouses": [
+        {
+          "id": "p_sofia",
+          "marriageDate": "2012-07-07",
+          "marriagePlace": "Uppsala, Sweden",
+          "divorceDate": null,
+          "status": "married"
+        }
+      ],
+      "events": [
+        {
+          "id": "e_seed7",
+          "type": "Occupation",
+          "date": "2010",
+          "endDate": null,
+          "place": "Seattle, Washington",
+          "note": "Architect"
+        }
+      ],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    },
+    {
+      "id": "p_claire",
+      "firstName": "Claire",
+      "middleName": "",
+      "lastName": "Hartwell",
+      "maidenName": "",
+      "nickname": "",
+      "gender": "female",
+      "birth": {
+        "date": "1987-05-08",
+        "place": "Hartford, Connecticut"
+      },
+      "death": null,
+      "living": true,
+      "photo": "",
+      "bio": "",
+      "parents": [
+        "p_robert",
+        "p_ada"
+      ],
+      "spouses": [],
+      "events": [],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    },
+    {
+      "id": "p_marcus",
+      "firstName": "Marcus",
+      "middleName": "",
+      "lastName": "Hartwell",
+      "maidenName": "",
+      "nickname": "",
+      "gender": "male",
+      "birth": {
+        "date": "1991-12-30",
+        "place": "Hartford, Connecticut"
+      },
+      "death": null,
+      "living": true,
+      "photo": "",
+      "bio": "",
+      "parents": [
+        "p_robert",
+        "p_ada"
+      ],
+      "spouses": [],
+      "events": [],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    },
+    {
+      "id": "p_sofia",
+      "firstName": "Sofia",
+      "middleName": "",
+      "lastName": "Hartwell",
+      "maidenName": "Lindqvist",
+      "nickname": "",
+      "gender": "female",
+      "birth": {
+        "date": "1986-08-15",
+        "place": "Uppsala, Sweden"
+      },
+      "death": null,
+      "living": true,
+      "photo": "",
+      "bio": "",
+      "parents": [],
+      "spouses": [
+        {
+          "id": "p_daniel",
+          "marriageDate": "2012-07-07",
+          "marriagePlace": "Uppsala, Sweden",
+          "divorceDate": null,
+          "status": "married"
+        }
+      ],
+      "events": [],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    },
+    {
+      "id": "p_leo",
+      "firstName": "Leo",
+      "middleName": "",
+      "lastName": "Hartwell",
+      "maidenName": "",
+      "nickname": "",
+      "gender": "male",
+      "birth": {
+        "date": "2014-03-22",
+        "place": "Seattle, Washington"
+      },
+      "death": null,
+      "living": true,
+      "photo": "",
+      "bio": "",
+      "parents": [
+        "p_daniel",
+        "p_sofia"
+      ],
+      "spouses": [],
+      "events": [],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    },
+    {
+      "id": "p_nora",
+      "firstName": "Nora",
+      "middleName": "",
+      "lastName": "Hartwell",
+      "maidenName": "",
+      "nickname": "",
+      "gender": "female",
+      "birth": {
+        "date": "2017-10-04",
+        "place": "Seattle, Washington"
+      },
+      "death": null,
+      "living": true,
+      "photo": "",
+      "bio": "",
+      "parents": [
+        "p_daniel",
+        "p_sofia"
+      ],
+      "spouses": [],
+      "events": [],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    }
+  ]
+}
